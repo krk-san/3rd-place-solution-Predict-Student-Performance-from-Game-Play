@@ -1,0 +1,18 @@
+# data
+input/*
+
+output/*
+*.png
+*.jpg
+*.jpeg
+*.dcm
+
+*kaggle.json
+
+# cache
+*/__pycache__/*
+*.pyc
+
+# Jupyter Notebook
+.ipynb_checkpoints
+

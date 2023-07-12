@@ -1,0 +1,130 @@
+
+# I/O
+# Competition Data
+TRAIN_CSV: /home/jovyan/work/input/predict-student-performance-from-game-play/train.csv
+LABEL_CSV: /home/jovyan/work/input/predict-student-performance-from-game-play/train_labels.csv
+
+# Additional Data from raw log data.
+USE_ADD: false
+ADD_LABEL_CSV: /home/jovyan/work/input/processed/from_event_log/all_labels.csv
+ADD_TRAIN_CSV: /home/jovyan/work/input/processed/from_event_log/all_features.csv
+
+# Output root path.
+OUTPUT_ROOT: /home/jovyan/work/output/
+
+# Model
+MODEL_TYPE: XGBoost
+NUM_FOLDS: 5
+SEED: 41
+PARAMS:
+  alpha: 8
+  booster: gbtree
+  colsample_bytree: 0.5
+  early_stopping_rounds: 50
+  eval_metric: logloss
+  learning_rate: 0.02
+  max_depth: 4
+  n_estimators: 2500
+  objective: binary:logistic
+  seed: 42
+  subsample: 0.8
+  tree_method: gpu_hist
+
+# Features.
+TH_DROP_NULL: 0.9
+SORT_COLS:
+- session_id
+- index
+DROP_RESTART: true
+USE_DATE: true
+USE_ET_DIFF_TH_COUNT: true
+USE_ET_GAP: true
+USE_ET_MINUS: true
+USE_LEVEL: true
+USE_LEVELS_FQID: true
+USE_LEVEL_AGG: true
+USE_LOC_DIFF: true
+USE_MEDIAN: true
+USE_PREDS: true
+USE_PREDS_BIN: true
+USE_PREDS_SUM: true
+USE_QUANTILE: true
+USE_RATIO: true
+USE_RIGHT_FQID: true
+USE_RIGHT_PERSON: true
+USE_SCREEN_RATIO: true
+USE_STD: true
+USE_TEXT_FQIDS_DIFF: true
+USE_TEXT_FQIDS_DIFF_SUM: true
+
+
+CATS:
+- event_name
+- name
+- fqid
+- room_fqid
+- text_fqid
+
+EVENTS:
+- checkpoint
+- cutscene_click
+- map_click
+- map_hover
+- navigate_click
+- notebook_click
+- notification_click
+- object_click
+- object_hover
+- observation_click
+- person_click
+
+FE_AGG:
+- text
+- fqid
+- room_fqid
+
+NAMES:
+- basic
+- undefined
+- close
+- open
+- prev
+- next
+
+NUMS:
+- elapsed_time
+- page
+- room_coor_x
+- room_coor_y
+- screen_coor_x
+- screen_coor_y
+- hover_duration
+- elapsed_time_diff
+
+LEVELS:
+  0-4:
+  - 0
+  - 1
+  - 2
+  - 3
+  - 4
+  13-22:
+  - 13
+  - 14
+  - 15
+  - 16
+  - 17
+  - 18
+  - 19
+  - 20
+  - 21
+  - 22
+  5-12:
+  - 5
+  - 6
+  - 7
+  - 8
+  - 9
+  - 10
+  - 11
+  - 12
