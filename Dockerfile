@@ -6,5 +6,4 @@ RUN pip install black && \
     jupyter nbextensions_configurator enable && \
     jupyter nbextension install https://github.com/drillan/jupyter-black/archive/master.zip && \
     jupyter nbextension enable jupyter-black-master/jupyter-black && \
-    polars==0.16.8 && \
-
+    polars==0.16.8
